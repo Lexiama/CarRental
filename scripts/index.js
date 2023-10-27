@@ -2,51 +2,57 @@
 
 window.onload = init;
 
-function init () {
-
-let buttonCalculator = document.getElementById("estBtn");
-buttonCalculator.onclick = buttoncalculateClicked;
-
-
-
- }
-
-function buttoncalculateClicked() {
-    let numberOfdays = document.getElementById("inputNumberOfDays").value;
-    const basePay = 29.99;
-    let outputCareRentalvalue = basePay * numberOfdays;
-    let outputOptionsvalue;
-    let outUnder25Surchargevalue;
-    let outputTotalDuevalue;
-
-
-    let isTollTagcheckecd = (document.getElementById("tollRadioBtn").checked);
-    let isGpschecked = (document.getElementById("gpsRadioBtn").checked);
-    let isRoadsidechecked = (document.getElementById("roadRadioBtn").checked);
-    let is25Nochecked = (document.getElementById("nocheckbox1").checked);
-    let isyeschecked =( document.getElementById("yescheckbox2").checked);
-
-    const outputCareRental= document.getElementById("outputCareRental");
-    const outputOptions= document.getElementById("outputOptions");
-    const outUnder25Surcharge= document.getElementById("outUnder25Surcharge");
-
- 
-        function calculateTotalCost() {
-
-
- let tollTag = document.getElementById("tollRadioBtn").checked;
-if (tollTag == true) {
- extraPerDay += 3.95;
-}
-let gps = document.getElementById("gpsRadioBtn").checked;
-if (gps == true) {
- extraPerDay += 4.95;
-}
-let roadside = document.getElementById("roadRadioBtn").checked;
-if (roadside == true) {
- extraPerDay += 2.95;
-}
-
- }
+function init() {
+    let buttonCalculator = document.getElementById("estBtn");
+    buttonCalculator.onclick = calculateTotalCost;
 
 }
+    //inputs
+function calculateTotalCost() {
+    let numberOfDays = parseFloat(document.getElementById("inputNumberOfDays").value);
+    const paymentValue = 29.99;
+    let carRentalValue = paymentValue * numberOfDays;
+    let optionsValue = 0;
+    let under25SurchargeValue = 0;
+    let nocheckbox1 = 0;
+
+    //options
+
+
+
+    let tollTag = document.getElementById("tollRadioBtn").checked;
+    if (tollTag) {
+        optionsValue += 3.95 * numberOfDays;
+    }
+
+    let gps = document.getElementById("gpsRadioBtn").checked;
+    if (gps) {
+        optionsValue += 2.95 * numberOfDays;
+    }
+
+    let roadside = document.getElementById("roadRadioBtn").checked;
+    if (roadside) {
+        optionsValue += 2.95 * numberOfDays;
+    }
+
+     
+
+    //under25Surcharge
+
+
+   
+
+
+
+
+    //outputs
+
+    document.getElementById("outputCarRental").value = carRentalValue.toFixed(2);
+    document.getElementById("outputTotal").value = optionsValue.toFixed(2);
+    document.getElementById("outputSurcharge").value = under25SurchargeValue.toFixed(2);
+    document.getElementById("outputTotalDue").value = total.toFixed(2);
+  
+}
+
+        
+
