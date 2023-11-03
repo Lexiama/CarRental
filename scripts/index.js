@@ -1,4 +1,4 @@
-"use strict";
+"use strict";        // Go over with tutor questions in notebook
 
 window.onload = init;
 
@@ -8,6 +8,7 @@ function init() {
 
 }
     //inputs
+    
 function calculateTotalCost() {
     let numberOfDays = parseFloat(document.getElementById("inputNumberOfDays").value);
     const paymentValue = 29.99;
